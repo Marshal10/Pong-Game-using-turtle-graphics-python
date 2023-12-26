@@ -1,39 +1,32 @@
 from turtle import Turtle
 
 MOVING_DISTANCE=20
-class Paddle():
+class Paddle(Turtle):
 
-    def __init__(self):
-        self.paddle=[]
-        self.create_paddle()
-        self.head=self.paddle[0]
-    
-    def create_paddle(self):
-        segment=Turtle(shape='square')
-        segment.color('white')
-        segment.penup ()
-        segment.shapesize(stretch_len=5,stretch_wid=1)
-        segment.goto((-380,0))
-        segment.left(90) 
-        self.paddle.append(segment)
-        
-        
+    def __init__(self,position):
+        super().__init__()
+        self.shape('square')
+        self.color('white')
+        self.penup ()
+        self.shapesize(stretch_len=5,stretch_wid=1)
+        self.goto(position)
+        self.left(90) 
         
     def move(self):
-        if self.head.ycor()==260:
-            self.head.setheading(270)
-        elif self.head.ycor()==-240:
-            self.head.setheading(90)
-        self.head.forward(MOVING_DISTANCE)
+        if self.ycor()==260:
+            self.setheading(270)
+        elif self.ycor()==-240:
+            self.setheading(90)
+        self.forward(MOVING_DISTANCE)
 
         
     def move_down(self):
-        if self.head.ycor()==-240:
+        if self.ycor()==-240:
             return None
-        self.head.backward(MOVING_DISTANCE)
+        self.backward(MOVING_DISTANCE)
         
     def move_up(self):
-        if self.head.ycor()>250:
+        if self.ycor()>250:
             return None
-        self.head.forward(MOVING_DISTANCE)
+        self.forward(MOVING_DISTANCE)
         
