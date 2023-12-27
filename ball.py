@@ -7,13 +7,20 @@ class Ball(Turtle):
         self.shape("circle")
         self.color('white')
         self.penup()
-        self.x_cor=0
-        self.y_cor=0
-        self.goto((self.x_cor,self.y_cor))
+        self.x_move=10
+        self.y_move=10
         
     def move(self):
-        self.x_cor+=-10
-        self.y_cor+=-10
-        #if self.xcor()==350:
-            
-        self.goto((self.x_cor,self.y_cor))
+        new_x=self.xcor()+self.x_move
+        new_y=self.ycor()+self.y_move
+         
+        self.goto(new_x,new_y)
+        
+    def bounce(self):
+        
+        self.y_move*=-1
+        
+    def bounce_of_paddle(self):
+        self.x_move*=-1 
+       
+        
